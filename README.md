@@ -1,39 +1,49 @@
-# MkDocs
+# MkDocs-Material-Dark-Theme
+A dark theme for the mkdocs-material theme
 
-Project documentation with Markdown.
+![Example Image](MkDocs-Material-Dark.png)
 
----
+# Usage
 
-[![PyPI Version][pypi-v-image]][pypi-v-link]
-[![Build Status][travis-image]][travis-link]
-[![Windows Build Status][appveyor-image]][appveyor-link]
-[![Coverage Status][codecov-image]][codecov-link]
-[![Landscale Code Health][landscape-image]][landscape-link]
+If you only want to use the dark theme you can just copy the css files and add them 
+using the **extra_css** yaml notation.
 
-- View the [MkDocs documentation][mkdocs].
-- Project [release notes][release-notes].
-- Visit the [MkDocs wiki](https://github.com/mkdocs/mkdocs/wiki) for community
-  resources, including third party themes and a list of MkDocs users.
-- IRC channel: `#mkdocs` on freenode.
-- Discussions and support: <https://groups.google.com/forum/#!forum/mkdocs>
+However this repository also enables the use of a web app.
+To also use this the **theme** folder and **theme_dir** configuration is required.
 
-## Code of Conduct
+**The following assumes you want to use both dark theme and webapp ability.**
 
-Everyone interacting in the MkDocs project's codebases, issue trackers, chat
-rooms, and mailing lists is expected to follow the [PyPA Code of Conduct].
+## Copy the files
 
-[appveyor-image]: https://img.shields.io/appveyor/ci/d0ugal/mkdocs/master.png
-[appveyor-link]: https://ci.appveyor.com/project/d0ugal/mkdocs
-[codecov-image]: http://codecov.io/github/mkdocs/mkdocs/coverage.svg?branch=master
-[codecov-link]: http://codecov.io/github/mkdocs/mkdocs?branch=master
-[landscape-image]: https://landscape.io/github/mkdocs/mkdocs/master/landscape.svg?style=flat-square
-[landscape-link]: https://landscape.io/github/mkdocs/mkdocs/master
-[pypi-v-image]: https://img.shields.io/pypi/v/mkdocs.png
-[pypi-v-link]: https://pypi.python.org/pypi/mkdocs
-[travis-image]: https://img.shields.io/travis/mkdocs/mkdocs/master.png
-[travis-link]: https://travis-ci.org/mkdocs/mkdocs
+Copy the contents of this repository to your root documentation path.
 
-[mkdocs]: http://www.mkdocs.org
-[release-notes]: http://www.mkdocs.org/about/release-notes/
+```
+==documentation
+  ==docs
+    ==SomeSubFolder
+    ==stylesheets
+      --dark_theme.css
+      --codehilite.css
+    --MyDocument.md
+    etc.
+  ==theme
+    --main.html
+    --manifest.json
+    etc.
+```
 
-[PyPA Code of Conduct]: https://www.pypa.io/en/latest/code-of-conduct/
+## Modify your configuration
+
+Then add the following to your ```mkdocs.yaml``` file:
+
+```
+# Documentation and theme
+theme: 'material'
+theme_dir: 'theme'
+
+extra_css:
+  - stylesheets/dark_theme.css
+  - stylesheets/codehilite.css
+```
+
+Make sure to change values like **name** and **icons** in ```manifest.json``` to your liking.
